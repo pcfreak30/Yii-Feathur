@@ -23,14 +23,11 @@ class <?php echo $migrationClass; ?> extends <?php echo $this->baseClass."\n"; ?
             <?php foreach($columns as $column): ?>
                 '<?php echo $column->name ?>' => '<?php echo $column->dbType ?>',
             ));
-                <?php
-                if($column->isPrimaryKey)
-                {
-                    ?>
+            <?php endforeach ?>
+            <?php foreach($columns as $column): ?>
+            <?php if($column->isPrimaryKey): ?>
             $this->addPrimaryKey('<?php echo $tableName; ?>_pk','<?php echo $tableName; ?>','<?php echo $column->name ?>');
-                    <?php
-                }
-                ?>
+            <?php endif; ?>
             <?php endforeach ?>
             return true;
             } catch (CDbException $e) {
