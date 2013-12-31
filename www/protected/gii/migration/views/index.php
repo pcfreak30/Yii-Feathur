@@ -47,7 +47,7 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 
 <p>This generator generates a model class for the specified database table.</p>
 
-<?php $form=$this->beginWidget('CCodeForm', array('migration'=>$model)); ?>
+<?php $form=$this->beginWidget('CCodeForm', array('model'=>$model)); ?>
 
 	<div class="row sticky">
 		<?php echo $form->labelEx($model, 'connectionId')?>
@@ -73,7 +73,7 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 	<div class="row">
 		<?php echo $form->labelEx($model,'tableName'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
-			'migration'=>$model,
+			'model'=>$model,
 			'attribute'=>'tableName',
 			'name'=>'tableName',
 			'source'=>Yii::app()->hasComponent($model->connectionId) ? array_keys(Yii::app()->{$model->connectionId}->schema->getTables()) : array(),
