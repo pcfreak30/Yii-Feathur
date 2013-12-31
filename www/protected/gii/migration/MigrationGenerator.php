@@ -2,7 +2,7 @@
 
 class MigrationGenerator extends CCodeGenerator
 {
-	public $codeModel='application.gii.migration.MigrateCode';
+	public $codeModel='application.gii.migration.MigrationCode';
 
 	/**
 	 * Provides autocomplete table names
