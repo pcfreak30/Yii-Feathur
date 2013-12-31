@@ -35,7 +35,7 @@ $('#{$class}_tableName').bind('keyup change', function(){
 		var migrationClass='';
 		$.each(tableName.split('_'), function() {
 			if(this.length>0)
-				migrationClass+=this.substring(0,1).toUpperCase()+this.substring(1);
+				migrationClass+=this.substring(0,1).toLowerCase()+this.substring(1);
 		});
 		migration.val(migrationClass);
 	}

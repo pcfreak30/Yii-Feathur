@@ -310,7 +310,7 @@ class MigrationCode extends CCodeModel
 		$tableName=$this->removePrefix($tableName,false);
 		if(($pos=strpos($tableName,'.'))!==false) // remove schema part (e.g. remove 'public2.' from 'public2.post')
 			$tableName=substr($tableName,$pos+1);
-		return 'm'.gmdate('ymd_His').'_create_table_'.$tableName;
+		return 'm'.gmdate('ymd_His').'_create_table_'.strtolower($tableName);
 	}
 
 	/**
