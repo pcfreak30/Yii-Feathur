@@ -99,7 +99,7 @@ class MigrationCode extends CCodeModel
 			$params=array(
 				'tableName'=>$schema==='' ? $tableName : $schema.'.'.$tableName,
                 'tablePrefix'=> !empty($this->tablePrefix) ? $this->tablePrefix : '',
-				'migrationClass'=>'m'.gmdate('ymd_His').'_'.$className,
+				'migrationClass'=> $className,
 				'columns'=>$table->columns,
 				'connectionId'=>$this->connectionId,
 			);
@@ -310,7 +310,7 @@ class MigrationCode extends CCodeModel
 		$tableName=$this->removePrefix($tableName,false);
 		if(($pos=strpos($tableName,'.'))!==false) // remove schema part (e.g. remove 'public2.' from 'public2.post')
 			$tableName=substr($tableName,$pos+1);
-		return 'create_table_'.$tableName;
+		return 'm'.gmdate('ymd_His').'_create_table_'.$tableName;
 	}
 
 	/**
