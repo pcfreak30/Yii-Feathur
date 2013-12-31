@@ -62,9 +62,9 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		<?php echo $form->textField($model,'tablePrefix', array('size'=>65)); ?>
 		<div class="tooltip">
 		This refers to the prefix name that is shared by all database tables.
-		Setting this property mainly affects how model classes are named based on
+		Setting this property mainly affects how migration classes are named based on
 		the table names. For example, a table prefix <code>tbl_</code> with a table name <code>tbl_post</code>
-		will generate a model class named <code>Post</code>.
+		will generate a migration class named <code>create_table_ost</code>.
 		<br/>
 		Leave this field empty if your database tables do not use common prefix.
 		</div>
@@ -91,10 +91,10 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 			),
 		)); ?>
 		<div class="tooltip" id="tableName-tooltip">
-		This refers to the table name that a new model class should be generated for
+		This refers to the table name that a new migration class should be generated for
 		(e.g. <code>tbl_user</code>). It can contain schema name, if needed (e.g. <code>public.tbl_post</code>).
 		You may also enter <code>*</code> (or <code>schemaName.*</code> for a particular DB schema)
-		to generate a model class for EVERY table.
+		to generate a migration class for EVERY table.
 		</div>
 		<?php echo $form->error($model,'tableName'); ?>
 	</div>
@@ -111,7 +111,7 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		<?php echo $form->labelEx($model,'baseClass'); ?>
 		<?php echo $form->textField($model,'baseClass',array('size'=>65)); ?>
 		<div class="tooltip">
-			This is the class that the new model class will extend from.
+			This is the class that the new migration class will extend from.
 			Please make sure the class exists and can be autoloaded.
 		</div>
 		<?php echo $form->error($model,'baseClass'); ?>
@@ -120,8 +120,8 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		<?php echo $form->labelEx($model,'migrationPath'); ?>
 		<?php echo $form->textField($model,'migrationPath', array('size'=>65)); ?>
 		<div class="tooltip">
-			This refers to the directory that the new model class file should be generated under.
-			It should be specified in the form of a path alias, for example, <code>application.models</code>.
+			This refers to the directory that the new migration class file should be generated under.
+			It should be specified in the form of a path alias, for example, <code>application.migrations</code>.
 		</div>
 		<?php echo $form->error($model,'migrationPath'); ?>
 	</div>
