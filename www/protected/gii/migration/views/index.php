@@ -125,25 +125,5 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		</div>
 		<?php echo $form->error($model,'migrationPath'); ?>
 	</div>
-	<div class="row">
-		<?php echo $form->labelEx($model,'buildRelations'); ?>
-		<?php echo $form->checkBox($model,'buildRelations'); ?>
-		<div class="tooltip">
-			Whether relations should be generated for the model class.
-			In order to generate relations, full scan of the whole database is needed.
-			You should disable this option if your database contains too many tables.
-		</div>
-		<?php echo $form->error($model,'buildRelations'); ?>
-	</div>
-	<div class="row">
-		<?php echo $form->labelEx($model,'commentsAsLabels'); ?>
-		<?php echo $form->checkBox($model,'commentsAsLabels'); ?>
-		<div class="tooltip">
-			Whether comments specified for the table columns should be used as the new model's attribute labels.
-			In case your RDBMS doesn't support feature of commenting columns or column comment wasn't set,
-			column name would be used as the attribute name base.
-		</div>
-		<?php echo $form->error($model,'commentsAsLabels'); ?>
-	</div>
 
 <?php $this->endWidget(); ?>

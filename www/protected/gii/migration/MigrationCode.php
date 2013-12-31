@@ -9,7 +9,6 @@ class MigrationCode extends CCodeModel
 	public $migrationPath='application.migrations';
 	public $baseClass='CDbMigration';
 	public $buildRelations=true;
-	public $commentsAsLabels=false;
 
 	/**
 	 * @var array list of candidate relation code. The array are indexed by AR class names and relation names.
@@ -30,7 +29,7 @@ class MigrationCode extends CCodeModel
 			array('migrationPath', 'validateMigrationPath', 'skipOnError'=>true),
 			array('baseClass, migrationClass', 'validateReservedWord', 'skipOnError'=>true),
 			array('baseClass', 'validateBaseClass', 'skipOnError'=>true),
-			array('connectionId, tablePrefix, migrationPath, baseClass, buildRelations, commentsAsLabels', 'sticky'),
+			array('connectionId, tablePrefix, migrationPath, baseClass, buildRelations', 'sticky'),
 		));
 	}
 
@@ -43,7 +42,6 @@ class MigrationCode extends CCodeModel
 			'migrationClass'=>'Migration Class',
 			'baseClass'=>'Base Class',
 			'buildRelations'=>'Build Relations',
-			'commentsAsLabels'=>'Use Column Comments as Attribute Labels',
 			'connectionId'=>'Database Connection',
 		));
 	}
