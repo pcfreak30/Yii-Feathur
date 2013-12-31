@@ -117,13 +117,13 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		<?php echo $form->error($model,'baseClass'); ?>
 	</div>
 	<div class="row sticky">
-		<?php echo $form->labelEx($model,'modelPath'); ?>
-		<?php echo $form->textField($model,'modelPath', array('size'=>65)); ?>
+		<?php echo $form->labelEx($model,'migrationPath'); ?>
+		<?php echo $form->textField($model,'migrationPath', array('size'=>65)); ?>
 		<div class="tooltip">
 			This refers to the directory that the new model class file should be generated under.
 			It should be specified in the form of a path alias, for example, <code>application.models</code>.
 		</div>
-		<?php echo $form->error($model,'modelPath'); ?>
+		<?php echo $form->error($model,'migrationPath'); ?>
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'buildRelations'); ?>
