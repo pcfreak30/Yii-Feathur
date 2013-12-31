@@ -95,7 +95,7 @@ class MigrationCode extends CCodeModel
         }
         foreach ($tables as $table) {
             $tableName = $this->removePrefix($table->name);
-            $className = array_shift($tables);
+            $className = array_shift($files);
             $params = array(
                 'tableName' => $schema === '' ? $tableName : $schema . '.' . $tableName,
                 'tablePrefix' => !empty($this->tablePrefix) ? $this->tablePrefix : '',
