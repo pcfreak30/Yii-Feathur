@@ -93,9 +93,9 @@ class MigrationCode extends CCodeModel
         } else {
             $files = Yii::app()->user->getState('gii_migration_classes');
         }
-        foreach ($tables as $key => $table) {
+        foreach ($tables as $table) {
             $tableName = $this->removePrefix($table->name);
-            $className = $files[$key];
+            $className = array_shift($tables);
             $params = array(
                 'tableName' => $schema === '' ? $tableName : $schema . '.' . $tableName,
                 'tablePrefix' => !empty($this->tablePrefix) ? $this->tablePrefix : '',
