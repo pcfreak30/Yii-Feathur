@@ -12,17 +12,17 @@ $('#{$class}_connectionId').change(function(){
 		tableName.autocomplete('option', 'source', data);
 	});
 });
-$('#{$class}_modelClass').change(function(){
+$('#{$class}_migrationClass').change(function(){
 	$(this).data('changed',$(this).val()!='');
 });
 $('#{$class}_tableName').bind('keyup change', function(){
-	var migration=$('#{$class}_modelClass');
+	var migration=$('#{$class}_migrationClass');
 	var tableName=$(this).val();
 	if(tableName.substring(tableName.length-1)!='*') {
 		$('.form .row.migration-class').show();
 	}
 	else {
-		$('#{$class}_modelClass').val('');
+		$('#{$class}_migrationClass').val('');
 		$('.form .row.migration-class').hide();
 	}
 	if(!migration.data('changed')) {
@@ -32,12 +32,12 @@ $('#{$class}_tableName').bind('keyup change', function(){
 		var tablePrefix=$('#{$class}_tablePrefix').val();
 		if(tablePrefix!='' && tableName.indexOf(tablePrefix)==0)
 			tableName=tableName.substring(tablePrefix.length);
-		var modelClass='';
+		var migrationClass='';
 		$.each(tableName.split('_'), function() {
 			if(this.length>0)
-				modelClass+=this.substring(0,1).toUpperCase()+this.substring(1);
+				migrationClass+=this.substring(0,1).toUpperCase()+this.substring(1);
 		});
-		migration.val(modelClass);
+		migration.val(migrationClass);
 	}
 });
 $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring($('#{$class}_tableName').val().length-1)!='*');
@@ -99,13 +99,13 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		<?php echo $form->error($model,'tableName'); ?>
 	</div>
 	<div class="row model-class">
-		<?php echo $form->label($model,'modelClass',array('required'=>true)); ?>
-		<?php echo $form->textField($model,'modelClass', array('size'=>65)); ?>
+		<?php echo $form->label($model,'migrationClass',array('required'=>true)); ?>
+		<?php echo $form->textField($model,'migrationClass', array('size'=>65)); ?>
 		<div class="tooltip">
 		This is the name of the model class to be generated (e.g. <code>Post</code>, <code>Comment</code>).
 		It is case-sensitive.
 		</div>
-		<?php echo $form->error($model,'modelClass'); ?>
+		<?php echo $form->error($model,'migrationClass'); ?>
 	</div>
 	<div class="row sticky">
 		<?php echo $form->labelEx($model,'baseClass'); ?>
@@ -117,13 +117,13 @@ $('.form .row.migration-class').toggle($('#{$class}_tableName').val().substring(
 		<?php echo $form->error($model,'baseClass'); ?>
 	</div>
 	<div class="row sticky">
-		<?php echo $form->labelEx($model,'modelPath'); ?>
-		<?php echo $form->textField($model,'modelPath', array('size'=>65)); ?>
+		<?php echo $form->labelEx($model,'migrationPath'); ?>
+		<?php echo $form->textField($model,'migrationPath', array('size'=>65)); ?>
 		<div class="tooltip">
 			This refers to the directory that the new model class file should be generated under.
 			It should be specified in the form of a path alias, for example, <code>application.models</code>.
 		</div>
-		<?php echo $form->error($model,'modelPath'); ?>
+		<?php echo $form->error($model,'migrationPath'); ?>
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'buildRelations'); ?>
