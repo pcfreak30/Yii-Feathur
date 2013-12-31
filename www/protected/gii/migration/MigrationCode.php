@@ -7,7 +7,7 @@ class MigrationCode extends CCodeModel
 	public $tableName;
 	public $migrationClass;
 	public $migrationPath='application.migrations';
-	public $baseClass='CActiveRecord';
+	public $baseClass='CDbMigration';
 	public $buildRelations=true;
 	public $commentsAsLabels=false;
 
@@ -183,8 +183,8 @@ class MigrationCode extends CCodeModel
 		$class=@Yii::import($this->baseClass,true);
 		if(!is_string($class) || !$this->classExists($class))
 			$this->addError('baseClass', "Class '{$this->baseClass}' does not exist or has syntax error.");
-		elseif($class!=='CActiveRecord' && !is_subclass_of($class,'CActiveRecord'))
-			$this->addError('baseClass', "'{$this->migration}' must extend from CActiveRecord.");
+		elseif($class!=='CDbMigration' && !is_subclass_of($class,'CDbMigration'))
+			$this->addError('baseClass', "'{$this->migration}' must extend from CDbMigration.");
 	}
 
 	public function getTableSchema($tableName)
